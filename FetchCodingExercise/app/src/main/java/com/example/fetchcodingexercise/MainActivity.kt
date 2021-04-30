@@ -18,16 +18,14 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var showList: Button
     lateinit var dataList: ListView
-    lateinit var test: TextView
     private var arrayAdapter: ArrayAdapter<Ids> ? = null
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         showList = findViewById(R.id.showList)
         dataList = findViewById(R.id.dataList)
-        test = findViewById(R.id.test)
 
         showList.setOnClickListener{
             thread {
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private fun getData(){
         var response: String? = ""
         response = URL("https://fetch-hiring.s3.amazonaws.com/hiring.json").readText(Charsets.UTF_8)
-        //Log.d("msg", response!!)
+        Log.d("msg", response!!)
         runOnUiThread { postExecute(response) }
     }
 
